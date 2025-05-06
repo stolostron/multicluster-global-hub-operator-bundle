@@ -3,6 +3,7 @@
   "baseBranches": ["main", "/^release-\\d+\\.\\d+/"],
   "autoApprove": true,
   "addLabels": ["ok-to-test", "lgtm", "approved"],
+  "branchPrefix": "konflux/component-updates/",
   "tekton": {
     "automerge": true,
     "automergeStrategy": "rebase",
