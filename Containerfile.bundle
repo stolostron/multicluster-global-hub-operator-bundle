@@ -2,7 +2,8 @@ FROM registry.access.redhat.com/ubi9/ubi-minimal:latest as builder
 
 WORKDIR /workspace
 COPY ./bundle ./bundle
-RUN ./bundle/konflux-patch.sh
+COPY ./konflux-patch.sh .
+RUN ./konflux-patch.sh
 
 FROM scratch
 
