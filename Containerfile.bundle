@@ -2,15 +2,10 @@ FROM registry.access.redhat.com/ubi9/ubi-minimal:latest as builder
 
 WORKDIR /workspace
 COPY ./bundle ./bundle
+
 COPY ./konflux-patch.sh .
 RUN ./konflux-patch.sh
-
-FROM scratch
-
-# Copy files to locations specified by labels.
-COPY --from=builder /workspace/bundle/manifests /manifests/
-COPY --from=builder /workspace/bundle/metadata /metadata/
-COPY --from=builder /workspace/bundle/tests/scorecard /tests/scorecard/
+RUN rm -rf ./konflux-patch.sh
 
 # Core bundle labels.
 LABEL operators.operatorframework.io.bundle.mediatype.v1=registry+v1
