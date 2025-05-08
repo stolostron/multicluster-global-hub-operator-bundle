@@ -30,9 +30,10 @@ LABEL com.redhat.delivery.operator.bundle=true
 # Bundle metadata
 LABEL name="multicluster-global-hub/multicluster-global-hub-operator-bundle"
 LABEL version="release-1.5"
-LABEL summary="multicluster-global-hub-operator-bundle"
+LABEL summary="multicluster global hub operator bundle"
 LABEL io.openshift.expose-services=""
 LABEL io.openshift.tags="data,images"
-LABEL io.k8s.display-name="multicluster-global-hub-operator-bundle"
+LABEL io.k8s.display-name="multicluster global hub operator bundle"
+LABEL io.k8s.description="This is the standard release image for the multicluster global hub operator bundle"
 LABEL maintainer="['acm-component-maintainers@redhat.com']"
-LABEL description="multicluster-global-hub-operator-bundle"
+LABEL description="multicluster global hub operator bundle"
