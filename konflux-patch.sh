@@ -6,7 +6,7 @@ export MULTICLUSTER_GLOBAL_HUB_AGENT_IMAGE=quay.io/redhat-user-workloads/acm-mul
 
 export MULTICLUSTER_GLOBAL_HUB_AGENT_IMAGE=quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-agent-globalhub-1-5@sha256:28b11e87aad4bcc0a888f8626155712b1cf224d0fc96f77b1d56d1b5a0ff169f
 
-export MULTICLUSTER_GLOBAL_HUB_MANAGER_IMAGE=quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-manager-globalhub-1-5@sha256:7befe7e0bc1fbde9d2a8ae1626d29ccf2bdcf312314ae359115f42d9d4472db7
+export MULTICLUSTER_GLOBAL_HUB_MANAGER_IMAGE=quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-manager-globalhub-1-5@sha256:38a3acceaa32a53456f5315654a9e9870de6cab8dc582fdd50cb744c691c4abb
 
 export MULTICLUSTER_GLOBAL_HUB_OPERATOR_IMAGE=quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-operator-globalhub-1-5@sha256:3e7df73925ab5169a33e88539a6f8e1c70d3ec9afd80c0d563ee65c0bdcefe6b
 
