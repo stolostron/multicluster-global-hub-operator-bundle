@@ -9,9 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: add labels
-        if: ${{ github.event.pull_request.user.login == 'red-hat-konflux' }}
         uses: actions-ecosystem/action-add-labels@v1
         with:
           labels: |
             lgtm
             approved
+       - name: test
+         run: |
+         echo ${{ github.event.pull_request.user.login }}
+         echo ${{ github.actor }}
+
