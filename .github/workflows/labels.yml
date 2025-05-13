@@ -6,6 +6,7 @@ on:
 
 jobs:
   add_labels:
+    if: ${{ github.event.pull_request.user.login == 'red-hat-konflux[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - name: add labels
@@ -14,7 +15,3 @@ jobs:
           labels: |
             lgtm
             approved
-      - name: test
-        run: |
-          echo "PR author: ${{ github.event.pull_request.user.login }}"
-          echo "Triggering actor: ${{ github.actor }}"
