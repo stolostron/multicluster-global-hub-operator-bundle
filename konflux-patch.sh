@@ -10,7 +10,7 @@ export MULTICLUSTER_GLOBAL_HUB_MANAGER_IMAGE=quay.io/redhat-user-workloads/acm-m
 
 export MULTICLUSTER_GLOBAL_HUB_OPERATOR_IMAGE=quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-operator-globalhub-1-5@sha256:3e7df73925ab5169a33e88539a6f8e1c70d3ec9afd80c0d563ee65c0bdcefe6b
 
-export MULTICLUSTER_GLOBAL_HUB_GRAFANA_IMAGE=quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/glo-grafana-globalhub-1-5@sha256:d7233000f46a385065e07d09c6e709fcc56be10dfcad0d8c36526dac91115587
+export MULTICLUSTER_GLOBAL_HUB_GRAFANA_IMAGE=quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/glo-grafana-globalhub-1-5@sha256:3f2e73d6eebd0b9fcf15f339bad96bee03404d5ade34de24935246610b9d30d0
 
 export MULTICLUSTER_GLOBAL_HUB_POSTGRES_EXPORTER_IMAGE=quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/postgres-exporter-globalhub-1-5@sha256:0aba33be6a2c4142e03bab3e346320fadaedbeac1f8735c8cb68b800f4719494
 
