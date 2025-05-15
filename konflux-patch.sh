@@ -2,9 +2,9 @@
 
 set -e
 
-export MULTICLUSTER_GLOBAL_HUB_AGENT_IMAGE=quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-agent-globalhub-1-5@sha256:9a2b6ccfde78779034f6ca6fde48c90d3de3cb3511dad466975b8e7d02a53f25
+export MULTICLUSTER_GLOBAL_HUB_AGENT_IMAGE=quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-agent-globalhub-1-5@sha256:c564c03c7d97b170daad32e82584d6de6df279769df2341aee03f4e5da624f84
 
-export MULTICLUSTER_GLOBAL_HUB_AGENT_IMAGE=quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-agent-globalhub-1-5@sha256:9a2b6ccfde78779034f6ca6fde48c90d3de3cb3511dad466975b8e7d02a53f25
+export MULTICLUSTER_GLOBAL_HUB_AGENT_IMAGE=quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-agent-globalhub-1-5@sha256:c564c03c7d97b170daad32e82584d6de6df279769df2341aee03f4e5da624f84
 
 export MULTICLUSTER_GLOBAL_HUB_MANAGER_IMAGE=quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-manager-globalhub-1-5@sha256:38a3acceaa32a53456f5315654a9e9870de6cab8dc582fdd50cb744c691c4abb
 
