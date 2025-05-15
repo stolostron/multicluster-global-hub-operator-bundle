@@ -25,7 +25,7 @@ export MULTICLUSTER_GLOBAL_HUB_KESSEL_SPICEDB_IMAGE=quay.io/redhat-services-prod
 export MULTICLUSTER_GLOBAL_HUB_KESSEL_RELATIONS_API_IMAGE=quay.io/redhat-services-prod/project-kessel-tenant/kessel-relations/relations-api@sha256:fff1d072580a65ee78a82a845eb256a669f67a0b0c1b810811c2a66e6c73b10d
 
 csv_name="multicluster-global-hub-operator.clusterserviceversion.yaml"
-csv_file="bundle/manifests/${csv_name}"
+csv_file="manifests/${csv_name}"
 if [ ! -f $csv_file ]; then
    echo "CSV file not found, the version or name might have changed on us!"
    exit 5
@@ -67,4 +67,4 @@ sed -i \
 	"${csv_file}"
 
 sed -i -e "s|multicluster-global-hub-operator\\.v|multicluster-global-hub-operator-rh\\.v|g" "${csv_file}"
-sed -i -e "s|multicluster-global-hub-operator|multicluster-global-hub-operator-rh|g" "bundle/metadata/annotations.yaml"
+sed -i -e "s|multicluster-global-hub-operator|multicluster-global-hub-operator-rh|g" "metadata/annotations.yaml"

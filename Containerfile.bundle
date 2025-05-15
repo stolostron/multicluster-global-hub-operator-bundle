@@ -1,7 +1,9 @@
-FROM registry.access.redhat.com/ubi9/ubi-minimal:latest as builder
+FROM registry.access.redhat.com/ubi9/ubi-minimal:latest
 
-WORKDIR /workspace
-COPY ./bundle ./bundle
+WORKDIR /
+COPY ./bundle/manifests ./manifests
+COPY ./bundle/metadata ./metadata
+COPY ./bundle/tests ./tests
 
 COPY ./konflux-patch.sh .
 RUN ./konflux-patch.sh
