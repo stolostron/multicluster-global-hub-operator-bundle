@@ -41,14 +41,6 @@ echo -e "  relatedImages:\n" \
      "   image: ${MULTICLUSTER_GLOBAL_HUB_GRAFANA_IMAGE}\n" \
      " - name: postgres-exporter\n" \
      "   image: ${MULTICLUSTER_GLOBAL_HUB_POSTGRES_EXPORTER_IMAGE}\n" \
-     " - name: inventory-api\n" \
-     "   image: ${MULTICLUSTER_GLOBAL_HUB_KESSEL_INVENTORY_API_IMAGE}\n" \
-     " - name: spicedb-operator\n" \
-     "   image: ${MULTICLUSTER_GLOBAL_HUB_KESSEL_SPICEDB_OPERATOR_IMAGE}\n" \
-     " - name: spicedb-instance\n" \
-     "   image: ${MULTICLUSTER_GLOBAL_HUB_KESSEL_SPICEDB_IMAGE}\n" \
-     " - name: relations-api\n" \
-     "   image: ${MULTICLUSTER_GLOBAL_HUB_KESSEL_RELATIONS_API_IMAGE}\n" \
      " - name: postgresql\n" \
      "   image: ${MULTICLUSTER_GLOBAL_HUB_POSTGRESQL_IMAGE}\n" \
    >> "${csv_file}"
@@ -59,10 +51,6 @@ sed -i \
    -e "s|quay.io/stolostron/multicluster-global-hub-agent:latest|${MULTICLUSTER_GLOBAL_HUB_AGENT_IMAGE}|g" \
    -e "s|quay.io/stolostron/grafana:2.12.0-SNAPSHOT-2024-09-03-21-11-25|${MULTICLUSTER_GLOBAL_HUB_GRAFANA_IMAGE}|g" \
    -e "s|quay.io/prometheuscommunity/postgres-exporter:v0.15.0|${MULTICLUSTER_GLOBAL_HUB_POSTGRES_EXPORTER_IMAGE}|g" \
-   -e "s|quay.io/redhat-services-prod/project-kessel-tenant/kessel-inventory/inventory-api@sha256:c443e7494d7b1dd4bb24234cf265a3f0fb5e9c3c0e2edeb2f00285a2286ff24f|${MULTICLUSTER_GLOBAL_HUB_KESSEL_INVENTORY_API_IMAGE}|g" \
-   -e "s|quay.io/redhat-services-prod/project-kessel-tenant/kessel-relations/spicedb-operator:latest|${MULTICLUSTER_GLOBAL_HUB_KESSEL_SPICEDB_OPERATOR_IMAGE}|g" \
-   -e "s|quay.io/redhat-services-prod/project-kessel-tenant/kessel-relations/spicedb:latest|${MULTICLUSTER_GLOBAL_HUB_KESSEL_SPICEDB_IMAGE}|g" \
-   -e "s|quay.io/redhat-services-prod/project-kessel-tenant/kessel-relations/relations-api@sha256:fff1d072580a65ee78a82a845eb256a669f67a0b0c1b810811c2a66e6c73b10d|${MULTICLUSTER_GLOBAL_HUB_KESSEL_RELATIONS_API_IMAGE}|g" \
    -e "s|quay.io/stolostron/postgresql-16:9.5-1732622748|${MULTICLUSTER_GLOBAL_HUB_POSTGRESQL_IMAGE}|g" \
 	"${csv_file}"
 
