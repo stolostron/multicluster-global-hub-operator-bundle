@@ -37,15 +37,15 @@ fi
 # Append relatedImages to the CSV
 echo -e "  relatedImages:\n" \
      " - name: multicluster-global-hub-manager\n" \
-     "   image: ${MULTICLUSTER_GLOBAL_HUB_MANAGER_STAGE_IMAGE}\n" \
+     "   image: ${MULTICLUSTER_GLOBAL_HUB_MANAGER_IMAGE}\n" \
      " - name: multicluster-global-hub-agent\n" \
-     "   image: ${MULTICLUSTER_GLOBAL_HUB_AGENT_STAGE_IMAGE}\n" \
+     "   image: ${MULTICLUSTER_GLOBAL_HUB_AGENT_IMAGE}\n" \
      " - name: grafana\n" \
-     "   image: ${MULTICLUSTER_GLOBAL_HUB_GRAFANA_STAGE_IMAGE}\n" \
+     "   image: ${MULTICLUSTER_GLOBAL_HUB_GRAFANA_IMAGE}\n" \
      " - name: postgres-exporter\n" \
-     "   image: ${MULTICLUSTER_GLOBAL_HUB_POSTGRES_EXPORTER_STAGE_IMAGE}\n" \
+     "   image: ${MULTICLUSTER_GLOBAL_HUB_POSTGRES_EXPORTER_IMAGE}\n" \
      " - name: postgresql\n" \
-     "   image: ${MULTICLUSTER_GLOBAL_HUB_POSTGRESQL_STAGE_IMAGE}\n" \
+     "   image: ${MULTICLUSTER_GLOBAL_HUB_POSTGRESQL_IMAGE}\n" \
    >> "${csv_file}"
 
 sed -i \
