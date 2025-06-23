@@ -9,7 +9,8 @@ metadata:
     pipelinesascode.tekton.dev/cancel-in-progress: "true"
     pipelinesascode.tekton.dev/max-keep-runs: "3"
     pipelinesascode.tekton.dev/on-cel-expression: event == "pull_request" && target_branch
-      == "release-1.5" && ("bundle/***".pathChanged() || "Containerfile.bundle".pathChanged() || "konflux-patch.sh".pathChanged())
+      == "release-1.5" && ("bundle/***".pathChanged() || ".tekton/***".pathChanged()
+      || "Containerfile.bundle".pathChanged() || "konflux-patch.sh".pathChanged())
   creationTimestamp: null
   labels:
     appstudio.openshift.io/application: release-globalhub-1-5
