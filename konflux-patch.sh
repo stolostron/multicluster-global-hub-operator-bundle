@@ -2,7 +2,7 @@
 
 set -e
 
-export MULTICLUSTER_GLOBAL_HUB_AGENT_STAGE_IMAGE=quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-agent-globalhub-1-6@sha256:094d7379f8c3cfa56d7e799cb6726949f6eb89f17158acc81489eb8787058407
+export MULTICLUSTER_GLOBAL_HUB_AGENT_STAGE_IMAGE=quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-agent-globalhub-1-6@sha256:b4b16854cf1b05c060b7bd84c24eaf881b84662bcaafd3fc5da478fe29c02430
 export MULTICLUSTER_GLOBAL_HUB_AGENT_IMAGE="registry.redhat.io/multicluster-globalhub/multicluster-globalhub-agent-rhel9@${MULTICLUSTER_GLOBAL_HUB_AGENT_STAGE_IMAGE##*@}"
 
 export MULTICLUSTER_GLOBAL_HUB_MANAGER_STAGE_IMAGE=quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-manager-globalhub-1-6@sha256:b384286f95dceb819f0fe65eaa384db16c044f3b8ef896ae34e0bbc3f1a32d95
