@@ -11,20 +11,10 @@ spec:
     kind: ManagedClusterMigration
     listKind: ManagedClusterMigrationList
     plural: managedclustermigrations
-    shortNames:
-    - mcm
     singular: managedclustermigration
   scope: Namespaced
   versions:
-  - additionalPrinterColumns:
-    - description: The overall status of the Migration
-      jsonPath: .status.phase
-      name: Status
-      type: string
-    - jsonPath: .metadata.creationTimestamp
-      name: Age
-      type: date
-    name: v1alpha1
+  - name: v1alpha1
     schema:
       openAPIV3Schema:
         description: ManagedClusterMigration is a global hub resource that allows
@@ -57,16 +47,6 @@ spec:
               includedManagedClusters:
                 description: IncludedManagedClusters is a list of managed clusters
                   that you want to migrate
-                items:
-                  type: string
-                type: array
-              includedResources:
-                description: |-
-                  IncludedResources is a list of resources that you want to migrate.
-                  the format is (g.v.r)|(kind)/namespace/name. i.e.:
-                  - configmap/multicluster-engine/cm1
-                  - hive.v1.clusterclaim/namespace1/name1
-                  - clusterrole/admin
                 items:
                   type: string
                 type: array
@@ -136,18 +116,6 @@ spec:
                   - type
                   type: object
                 type: array
-              phase:
-                description: Phase represents the current phase of the migration
-                enum:
-                - Pending
-                - Validating
-                - Initializing
-                - Deploying
-                - Registering
-                - Cleaning
-                - Completed
-                - Failed
-                type: string
             type: object
         type: object
     served: true
