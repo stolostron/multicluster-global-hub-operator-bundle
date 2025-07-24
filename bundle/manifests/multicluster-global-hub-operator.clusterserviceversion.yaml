@@ -41,7 +41,7 @@ metadata:
     categories: Integration & Delivery,OpenShift Optional
     certified: "false"
     containerImage: quay.io/stolostron/multicluster-global-hub-operator:latest
-    createdAt: "2025-06-10T06:58:35Z"
+    createdAt: "2025-07-23T09:04:08Z"
     description: Manages the installation and upgrade of the Multicluster Global Hub.
     features.operators.openshift.io/cnf: "false"
     features.operators.openshift.io/cni: "false"
@@ -53,7 +53,6 @@ metadata:
     features.operators.openshift.io/token-auth-aws: "false"
     features.operators.openshift.io/token-auth-azure: "false"
     features.operators.openshift.io/token-auth-gcp: "false"
-    olm.skipRange: '>=1.4.0 <1.5.0'
     operatorframework.io/initialization-resource: '{"apiVersion":"operator.open-cluster-management.io/v1alpha4",
       "kind":"MulticlusterGlobalHub","metadata":{"name":"multiclusterglobalhub","namespace":"multicluster-global-hub"},
       "spec": {}}'
@@ -71,7 +70,7 @@ metadata:
     operatorframework.io/arch.ppc64le: supported
     operatorframework.io/arch.s390x: supported
     operatorframework.io/os.linux: supported
-  name: multicluster-global-hub-operator.v1.5.0-dev
+  name: multicluster-global-hub-operator.v1.4.2
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
@@ -91,11 +90,6 @@ spec:
           want to migrate
         displayName: Included Managed Clusters
         path: includedManagedClusters
-      - description: 'IncludedResources is a list of resources that you want to migrate.
-          the format is (g.v.r)|(kind)/namespace/name. i.e.: - configmap/multicluster-engine/cm1
-          - hive.v1.clusterclaim/namespace1/name1 - clusterrole/admin'
-        displayName: Included Resources
-        path: includedResources
       - description: To defines which hub cluster the managed clusters migrate to
         displayName: To
         path: to
@@ -104,9 +98,6 @@ spec:
           current state
         displayName: Conditions
         path: conditions
-      - description: Phase represents the current phase of the migration
-        displayName: Phase
-        path: phase
       version: v1alpha1
     - description: MulticlusterGlobalHubAgent is the Schema for the multiclusterglobalhubagents
         API
@@ -185,14 +176,6 @@ spec:
         path: imagePullSecret
         x-descriptors:
         - urn:alm:descriptor:io.kubernetes:Secret
-      - description: InstallAgentOnLocal determines whether deploy the Global Hub
-          Agent on the local hub cluster or not. If set to true, the Global Hub Agent
-          will be installed on the local hub cluster only. If set to false, the Global
-          Hub Agent will not be installed on the local hub cluster.
-        displayName: Install Agent On Local
-        path: installAgentOnLocal
-        x-descriptors:
-        - urn:alm:descriptor:com.tectonic.ui:booleanSwitch
       - description: Tolerations causes all components to tolerate any taints
         displayName: Tolerations
         path: tolerations
@@ -381,15 +364,13 @@ spec:
           - ""
           resources:
           - configmaps
-          - events
           - namespaces
+          - persistentvolumeclaims
           - pods
           - secrets
-          - services
           verbs:
           - create
           - delete
-          - deletecollection
           - get
           - list
           - patch
@@ -398,26 +379,11 @@ spec:
         - apiGroups:
           - ""
           resources:
-          - endpoints
-          verbs:
-          - get
-          - list
-          - watch
-        - apiGroups:
-          - ""
-          resources:
-          - groups
-          - users
-          verbs:
-          - impersonate
-        - apiGroups:
-          - ""
-          resources:
-          - jobs
-          - persistentvolumeclaims
+          - events
           verbs:
           - create
           - delete
+          - deletecollection
           - get
           - list
           - patch
@@ -427,14 +393,12 @@ spec:
           - ""
           resources:
           - serviceaccounts
+          - services
           verbs:
           - create
           - delete
-          - deletecollection
           - get
-          - impersonate
           - list
-          - patch
           - update
           - watch
         - apiGroups:
@@ -498,53 +462,26 @@ spec:
           - update
           - watch
         - apiGroups:
-          - agent.open-cluster-management.io
-          resources:
-          - klusterletaddonconfigs
-          verbs:
-          - create
-          - get
-          - list
-          - watch
-        - apiGroups:
           - apiextensions.k8s.io
           resources:
           - customresourcedefinitions
           verbs:
-          - create
-          - delete
           - get
           - list
-          - update
           - watch
         - apiGroups:
           - app.k8s.io
           resources:
           - applications
           verbs:
-          - create
-          - delete
           - get
           - list
           - patch
           - update
-          - watch
         - apiGroups:
           - apps
           resources:
           - deployments
-          verbs:
-          - create
-          - delete
-          - deletecollection
-          - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
-          - apps
-          resources:
           - statefulsets
           verbs:
           - create
@@ -557,13 +494,18 @@ spec:
           - apps.open-cluster-management.io
           resources:
           - channels
+          - subscriptions
+          verbs:
+          - get
+          - list
+          - patch
+          - update
+        - apiGroups:
+          - apps.open-cluster-management.io
+          resources:
           - placementrules
           - subscriptionreports
-          - subscriptions
-          - subscriptionstatuses
           verbs:
-          - create
-          - delete
           - get
           - list
           - patch
@@ -587,43 +529,6 @@ spec:
           verbs:
           - create
           - get
-        - apiGroups:
-          - authzed.com
-          resources:
-          - spicedbclusters
-          verbs:
-          - create
-          - delete
-          - deletecollection
-          - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
-          - authzed.com
-          resources:
-          - spicedbclusters/status
-          verbs:
-          - create
-          - delete
-          - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
-          - batch
-          resources:
-          - jobs
-          verbs:
-          - create
-          - delete
-          - get
-          - list
-          - patch
-          - update
-          - watch
         - apiGroups:
           - certificates.k8s.io
           resources:
@@ -666,7 +571,6 @@ spec:
           - clusterclaims
           - managedclusters
           - managedclustersetbindings
-          - managedclustersets
           - placements
           verbs:
           - create
@@ -680,6 +584,7 @@ spec:
           - cluster.open-cluster-management.io
           resources:
           - managedclusters/finalizers
+          - managedclustersets
           - placementdecisions
           - placementdecisions/finalizers
           - placements/finalizers
@@ -695,14 +600,6 @@ spec:
           - global
           resources:
           - managedclustersets/bind
-          verbs:
-          - create
-          - delete
-        - apiGroups:
-          - cluster.open-cluster-management.io
-          resources:
-          - managedclustersets/bind
-          - managedclustersets/join
           verbs:
           - create
           - delete
@@ -733,7 +630,6 @@ spec:
           - leases
           verbs:
           - create
-          - delete
           - get
           - list
           - patch
@@ -743,12 +639,9 @@ spec:
           - global-hub.open-cluster-management.io
           resources:
           - managedclustermigrations
-          - managedclustermigrations/status
           verbs:
-          - delete
           - get
           - list
-          - patch
           - update
           - watch
         - apiGroups:
@@ -874,14 +767,6 @@ spec:
           - list
           - watch
         - apiGroups:
-          - platform.stackrox.io
-          resources:
-          - centrals
-          verbs:
-          - get
-          - list
-          - watch
-        - apiGroups:
           - policy.open-cluster-management.io
           resources:
           - placementbindings
@@ -889,8 +774,6 @@ spec:
           - policyautomations
           - policysets
           verbs:
-          - create
-          - delete
           - get
           - list
           - patch
@@ -915,18 +798,10 @@ spec:
           verbs:
           - create
           - delete
-          - deletecollection
           - get
           - list
-          - patch
           - update
           - watch
-        - apiGroups:
-          - register.open-cluster-management.io
-          resources:
-          - managedclusters/accept
-          verbs:
-          - update
         - apiGroups:
           - route.openshift.io
           resources:
@@ -1137,8 +1012,9 @@ spec:
   maintainers:
   - email: acm-contact@redhat.com
     name: acm-contact
-  maturity: release-1.5
+  maturity: release-1.4
   provider:
     name: Red Hat, Inc
     url: https://github.com/stolostron/multicluster-global-hub
-  version: 1.5.0-dev
+  replaces: multicluster-global-hub-operator.v1.4.1
+  version: 1.4.2
