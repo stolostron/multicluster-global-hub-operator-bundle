@@ -13,16 +13,6 @@ metadata:
           "spec": {}
         },
         {
-          "apiVersion": "operator.open-cluster-management.io/v1alpha1",
-          "kind": "MulticlusterGlobalHubAgent",
-          "metadata": {
-            "name": "multiclusterglobalhubagent"
-          },
-          "spec": {
-            "transportConfigSecretName": "transport-config"
-          }
-        },
-        {
           "apiVersion": "operator.open-cluster-management.io/v1alpha4",
           "kind": "MulticlusterGlobalHub",
           "metadata": {
@@ -41,37 +31,17 @@ metadata:
     categories: Integration & Delivery,OpenShift Optional
     certified: "false"
     containerImage: quay.io/stolostron/multicluster-global-hub-operator:latest
-    createdAt: "2025-06-10T06:58:35Z"
+    createdAt: "2025-08-08T02:43:47Z"
     description: Manages the installation and upgrade of the Multicluster Global Hub.
-    features.operators.openshift.io/cnf: "false"
-    features.operators.openshift.io/cni: "false"
-    features.operators.openshift.io/csi: "false"
-    features.operators.openshift.io/disconnected: "true"
-    features.operators.openshift.io/fips-compliant: "true"
-    features.operators.openshift.io/proxy-aware: "false"
-    features.operators.openshift.io/tls-profiles: "false"
-    features.operators.openshift.io/token-auth-aws: "false"
-    features.operators.openshift.io/token-auth-azure: "false"
-    features.operators.openshift.io/token-auth-gcp: "false"
-    olm.skipRange: '>=1.4.0 <1.5.0'
     operatorframework.io/initialization-resource: '{"apiVersion":"operator.open-cluster-management.io/v1alpha4",
       "kind":"MulticlusterGlobalHub","metadata":{"name":"multiclusterglobalhub","namespace":"multicluster-global-hub"},
       "spec": {}}'
     operatorframework.io/suggested-namespace: multicluster-global-hub
-    operators.openshift.io/infrastructure-features: '["disconnected", "fips"]'
-    operators.openshift.io/valid-subscription: '["OpenShift Platform Plus", "Red Hat
-      Advanced Cluster Management for Kubernetes"]'
     operators.operatorframework.io/builder: operator-sdk-v1.34.1
     operators.operatorframework.io/project_layout: go.kubebuilder.io/v4
     repository: https://github.com/stolostron/multicluster-global-hub
     support: Red Hat
-  labels:
-    operatorframework.io/arch.amd64: supported
-    operatorframework.io/arch.arm64: supported
-    operatorframework.io/arch.ppc64le: supported
-    operatorframework.io/arch.s390x: supported
-    operatorframework.io/os.linux: supported
-  name: multicluster-global-hub-operator.v1.5.0-dev
+  name: multicluster-global-hub-operator.v1.3.4
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
@@ -91,55 +61,9 @@ spec:
           want to migrate
         displayName: Included Managed Clusters
         path: includedManagedClusters
-      - description: 'IncludedResources is a list of resources that you want to migrate.
-          the format is (g.v.r)|(kind)/namespace/name. i.e.: - configmap/multicluster-engine/cm1
-          - hive.v1.clusterclaim/namespace1/name1 - clusterrole/admin'
-        displayName: Included Resources
-        path: includedResources
       - description: To defines which hub cluster the managed clusters migrate to
         displayName: To
         path: to
-      statusDescriptors:
-      - description: Conditions represents the latest available observations of the
-          current state
-        displayName: Conditions
-        path: conditions
-      - description: Phase represents the current phase of the migration
-        displayName: Phase
-        path: phase
-      version: v1alpha1
-    - description: MulticlusterGlobalHubAgent is the Schema for the multiclusterglobalhubagents
-        API
-      displayName: Multicluster Global Hub Agent
-      kind: MulticlusterGlobalHubAgent
-      name: multiclusterglobalhubagents.operator.open-cluster-management.io
-      resources:
-      - kind: Deployment
-        name: multicluster-global-hub-operator
-        version: v1
-      specDescriptors:
-      - description: ImagePullPolicy specifies the pull policy of the multicluster
-          global hub agent image
-        displayName: Image Pull Policy
-        path: imagePullPolicy
-        x-descriptors:
-        - urn:alm:descriptor:com.tectonic.ui:imagePullPolicy
-      - description: ImagePullSecret specifies the pull secret of the multicluster
-          global hub agent image
-        displayName: Image Pull Secret
-        path: imagePullSecret
-        x-descriptors:
-        - urn:alm:descriptor:io.kubernetes:Secret
-      - description: Tolerations causes all components to tolerate any taints
-        displayName: Tolerations
-        path: tolerations
-      - description: TransportConfigSecretName specifies the secret which is used
-          to connect to the global hub Kafka. You can get kafka.yaml content using
-          `tools/generate-kafka-config.sh` from the global hub environment. Then you
-          can create the secret in the current environment by running `kubectl create
-          secret generic transport-config -n "multicluster-global-hub" --from-file=kafka.yaml="./kafka.yaml"`
-        displayName: Transport Config Secret Name
-        path: transportConfigSecretName
       statusDescriptors:
       - description: Conditions represents the latest available observations of the
           current state
@@ -185,14 +109,6 @@ spec:
         path: imagePullSecret
         x-descriptors:
         - urn:alm:descriptor:io.kubernetes:Secret
-      - description: InstallAgentOnLocal determines whether deploy the Global Hub
-          Agent on the local hub cluster or not. If set to true, the Global Hub Agent
-          will be installed on the local hub cluster only. If set to false, the Global
-          Hub Agent will not be installed on the local hub cluster.
-        displayName: Install Agent On Local
-        path: installAgentOnLocal
-        x-descriptors:
-        - urn:alm:descriptor:com.tectonic.ui:booleanSwitch
       - description: Tolerations causes all components to tolerate any taints
         displayName: Tolerations
         path: tolerations
@@ -230,22 +146,16 @@ spec:
     kafka-kafka-0                                           1/1     Running   0          20m
     kafka-kafka-1                                           1/1     Running   0          20m
     kafka-kafka-2                                           1/1     Running   0          20m
+    kafka-zookeeper-0                                       1/1     Running   0          21m
+    kafka-zookeeper-1                                       1/1     Running   0          21m
+    kafka-zookeeper-2                                       1/1     Running   0          21m
     multicluster-global-hub-grafana-5b7cfb6876-5rcnn        2/2     Running   0          19m
     multicluster-global-hub-grafana-5b7cfb6876-wq99v        2/2     Running   0          19m
     multicluster-global-hub-manager-7f56d78c49-hzfvw        1/1     Running   0          19m
     multicluster-global-hub-manager-7f56d78c49-wbkzl        1/1     Running   0          19m
     multicluster-global-hub-operator-768bd5bd4f-59xjd       1/1     Running   0          22m
-    multicluster-global-hub-postgresql-0                    2/2     Running   0          22m
+    multicluster-global-hub-postgres-0                      2/2     Running   0          22m
     ```
-    ## Documentation
-    For documentation about installing and using the Multicluster GlobalHub Operator with Red Hat Advanced Cluster Management for
-    Kubernetes, see [Multicluser GlobalHub Documentation](https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.9/html-single/multicluster_global_hub/index#doc-wrapper) in the Red Hat Advanced Cluster Management
-    documentation.
-
-    ## Support & Troubleshooting
-    Product support, which includes Support Cases, Product Pages, and Knowledgebase articles, is available when you have
-    a [Red Hat Advanced Cluster Management](https://www.redhat.com/en/technologies/management/advanced-cluster-management)
-    subscription.
   displayName: Multicluster Global Hub Operator
   icon:
   - base64data: PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MjEuMTUgNzIxLjE1Ij48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2RiMzkyNzt9LmNscy0ye2ZpbGw6I2NiMzYyODt9LmNscy0ze2ZpbGw6I2ZmZjt9LmNscy00e2ZpbGw6I2UzZTNlMjt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPlByb2R1Y3RfSWNvbi1SZWRfSGF0QWR2YW5jZWRfQ2x1c3Rlcl9NYW5hZ2VtZW50X2Zvcl9LdWJlcm5ldGVzLVJHQjwvdGl0bGU+PGcgaWQ9IkxheWVyXzEiIGRhdGEtbmFtZT0iTGF5ZXIgMSI+PGNpcmNsZSBjbGFzcz0iY2xzLTEiIGN4PSIzNjAuNTciIGN5PSIzNjAuNTciIHI9IjM1OC41OCIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTYxNC4xMywxMDcsMTA3LDYxNC4xM2MxNDAsMTQwLDM2Ny4wNywxNDAsNTA3LjExLDBTNzU0LjE2LDI0Ny4wNiw2MTQuMTMsMTA3WiIvPjxyZWN0IGNsYXNzPSJjbHMtMyIgeD0iMzMwLjg3IiB5PSIyODAuNiIgd2lkdGg9IjIwMy4xNyIgaGVpZ2h0PSIyMCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTc4LjkgMzkwLjUyKSByb3RhdGUoLTQ0Ljk2KSIvPjxyZWN0IGNsYXNzPSJjbHMtMyIgeD0iMzA2LjYzIiB5PSIxNjcuODMiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMDQuNDciIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04NS4zMyAxNjIuMjcpIHJvdGF0ZSgtMjUuNDUpIi8+PHJlY3QgY2xhc3M9ImNscy0zIiB4PSIxNjIuOTgiIHk9IjM2NC4xIiB3aWR0aD0iMTk4LjI4IiBoZWlnaHQ9IjIwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNDIuMzkgMzMuNjEpIHJvdGF0ZSgtNi43OSkiLz48cmVjdCBjbGFzcz0iY2xzLTMiIHg9IjI0NS4xIiB5PSI0NTEuNTQiIHdpZHRoPSIyMDAuNjIiIGhlaWdodD0iMjAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNjMuMDEgNzMzLjI2KSByb3RhdGUoLTgxLjMxKSIvPjxyZWN0IGNsYXNzPSJjbHMtMyIgeD0iNDQzLjg1IiB5PSIzMDMuNzYiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMDcuMDQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xMDkuOTcgNjM5LjU4KSByb3RhdGUoLTY0LjMpIi8+PGNpcmNsZSBjbGFzcz0iY2xzLTMiIGN4PSI1MDQuMzQiIGN5PSIyMTguODMiIHI9IjQ0LjA4Ii8+PGNpcmNsZSBjbGFzcz0iY2xzLTMiIGN4PSIyNzIuNyIgY3k9IjE3Ny43NSIgcj0iNDQuMDgiLz48Y2lyY2xlIGNsYXNzPSJjbHMtMyIgY3g9IjU0Ny4xMiIgY3k9IjQ1Mi4xNyIgcj0iNDQuMDgiLz48Y2lyY2xlIGNsYXNzPSJjbHMtMyIgY3g9IjE2My42OCIgY3k9IjM4NS44MiIgcj0iNDQuMDgiLz48Y2lyY2xlIGNsYXNzPSJjbHMtMyIgY3g9IjMzMC4yNiIgY3k9IjU2MC43IiByPSI0NC4wOCIvPjxwYXRoIGNsYXNzPSJjbHMtNCIgZD0iTTQ0NC45NCwyNzkuOTIsMjc2LjE5LDQ0OC42N0ExMTkuMzIsMTE5LjMyLDAsMCwwLDQ0NC45NCwyNzkuOTJaIi8+PHBhdGggY2xhc3M9ImNscy0zIiBkPSJNMzc1LjY4LDI0NS43NmExMTkuMzMsMTE5LjMzLDAsMCwwLTk5LjQ5LDIwMi45MUw0NDQuOTQsMjc5LjkyQTExOC44OSwxMTguODksMCwwLDAsMzc1LjY4LDI0NS43NloiLz48L2c+PC9zdmc+
@@ -382,57 +292,37 @@ spec:
           resources:
           - configmaps
           - events
+          verbs:
+          - create
+          - delete
+          - deletecollection
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - ""
+          resources:
           - namespaces
-          - pods
-          - secrets
+          - serviceaccounts
           - services
           verbs:
           - create
           - delete
-          - deletecollection
           - get
           - list
-          - patch
           - update
           - watch
         - apiGroups:
           - ""
           resources:
-          - endpoints
-          verbs:
-          - get
-          - list
-          - watch
-        - apiGroups:
-          - ""
-          resources:
-          - groups
-          - users
-          verbs:
-          - impersonate
-        - apiGroups:
-          - ""
-          resources:
-          - jobs
           - persistentvolumeclaims
+          - secrets
           verbs:
           - create
           - delete
           - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
-          - ""
-          resources:
-          - serviceaccounts
-          verbs:
-          - create
-          - delete
-          - deletecollection
-          - get
-          - impersonate
           - list
           - patch
           - update
@@ -463,6 +353,13 @@ spec:
         - apiGroups:
           - addon.open-cluster-management.io
           resources:
+          - clustermanagementaddons/finalizers
+          - managedclusteraddons/finalizers
+          verbs:
+          - update
+        - apiGroups:
+          - addon.open-cluster-management.io
+          resources:
           - managedclusteraddons
           verbs:
           - create
@@ -473,12 +370,6 @@ spec:
           - patch
           - update
           - watch
-        - apiGroups:
-          - addon.open-cluster-management.io
-          resources:
-          - managedclusteraddons/finalizers
-          verbs:
-          - update
         - apiGroups:
           - addon.open-cluster-management.io
           resources:
@@ -498,21 +389,10 @@ spec:
           - update
           - watch
         - apiGroups:
-          - agent.open-cluster-management.io
-          resources:
-          - klusterletaddonconfigs
-          verbs:
-          - create
-          - get
-          - list
-          - watch
-        - apiGroups:
           - apiextensions.k8s.io
           resources:
           - customresourcedefinitions
           verbs:
-          - create
-          - delete
           - get
           - list
           - update
@@ -522,29 +402,14 @@ spec:
           resources:
           - applications
           verbs:
-          - create
-          - delete
           - get
           - list
           - patch
           - update
-          - watch
         - apiGroups:
           - apps
           resources:
           - deployments
-          verbs:
-          - create
-          - delete
-          - deletecollection
-          - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
-          - apps
-          resources:
           - statefulsets
           verbs:
           - create
@@ -558,17 +423,12 @@ spec:
           resources:
           - channels
           - placementrules
-          - subscriptionreports
           - subscriptions
-          - subscriptionstatuses
           verbs:
-          - create
-          - delete
           - get
           - list
           - patch
           - update
-          - watch
         - apiGroups:
           - authentication.open-cluster-management.io
           resources:
@@ -587,43 +447,6 @@ spec:
           verbs:
           - create
           - get
-        - apiGroups:
-          - authzed.com
-          resources:
-          - spicedbclusters
-          verbs:
-          - create
-          - delete
-          - deletecollection
-          - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
-          - authzed.com
-          resources:
-          - spicedbclusters/status
-          verbs:
-          - create
-          - delete
-          - get
-          - list
-          - patch
-          - update
-          - watch
-        - apiGroups:
-          - batch
-          resources:
-          - jobs
-          verbs:
-          - create
-          - delete
-          - get
-          - list
-          - patch
-          - update
-          - watch
         - apiGroups:
           - certificates.k8s.io
           resources:
@@ -663,10 +486,18 @@ spec:
         - apiGroups:
           - cluster.open-cluster-management.io
           resources:
-          - clusterclaims
           - managedclusters
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - update
+          - watch
+        - apiGroups:
+          - cluster.open-cluster-management.io
+          resources:
           - managedclustersetbindings
-          - managedclustersets
           - placements
           verbs:
           - create
@@ -675,29 +506,15 @@ spec:
           - list
           - patch
           - update
-          - watch
         - apiGroups:
           - cluster.open-cluster-management.io
           resources:
-          - managedclusters/finalizers
-          - placementdecisions
-          - placementdecisions/finalizers
-          - placements/finalizers
+          - managedclustersets
           verbs:
           - get
           - list
           - patch
           - update
-          - watch
-        - apiGroups:
-          - cluster.open-cluster-management.io
-          resourceNames:
-          - global
-          resources:
-          - managedclustersets/bind
-          verbs:
-          - create
-          - delete
         - apiGroups:
           - cluster.open-cluster-management.io
           resources:
@@ -719,21 +536,11 @@ spec:
           - update
           - watch
         - apiGroups:
-          - config.openshift.io
-          resources:
-          - clusterversions
-          - infrastructures
-          verbs:
-          - get
-          - list
-          - watch
-        - apiGroups:
           - coordination.k8s.io
           resources:
           - leases
           verbs:
           - create
-          - delete
           - get
           - list
           - patch
@@ -743,12 +550,9 @@ spec:
           - global-hub.open-cluster-management.io
           resources:
           - managedclustermigrations
-          - managedclustermigrations/status
           verbs:
-          - delete
           - get
           - list
-          - patch
           - update
           - watch
         - apiGroups:
@@ -758,15 +562,6 @@ spec:
           verbs:
           - get
           - list
-          - watch
-        - apiGroups:
-          - internal.open-cluster-management.io
-          resources:
-          - managedclusterinfos
-          verbs:
-          - get
-          - list
-          - update
           - watch
         - apiGroups:
           - kafka.strimzi.io
@@ -819,7 +614,6 @@ spec:
         - apiGroups:
           - operator.open-cluster-management.io
           resources:
-          - multiclusterglobalhubagents
           - multiclusterglobalhubs
           verbs:
           - create
@@ -832,14 +626,12 @@ spec:
         - apiGroups:
           - operator.open-cluster-management.io
           resources:
-          - multiclusterglobalhubagents/finalizers
           - multiclusterglobalhubs/finalizers
           verbs:
           - update
         - apiGroups:
           - operator.open-cluster-management.io
           resources:
-          - multiclusterglobalhubagents/status
           - multiclusterglobalhubs/status
           verbs:
           - get
@@ -851,9 +643,6 @@ spec:
           - clusterserviceversions
           verbs:
           - delete
-          - get
-          - list
-          - watch
         - apiGroups:
           - operators.coreos.com
           resources:
@@ -874,28 +663,15 @@ spec:
           - list
           - watch
         - apiGroups:
-          - platform.stackrox.io
-          resources:
-          - centrals
-          verbs:
-          - get
-          - list
-          - watch
-        - apiGroups:
           - policy.open-cluster-management.io
           resources:
           - placementbindings
           - policies
-          - policyautomations
-          - policysets
           verbs:
-          - create
-          - delete
           - get
           - list
           - patch
           - update
-          - watch
         - apiGroups:
           - postgres-operator.crunchydata.com
           resources:
@@ -915,18 +691,10 @@ spec:
           verbs:
           - create
           - delete
-          - deletecollection
           - get
           - list
-          - patch
           - update
           - watch
-        - apiGroups:
-          - register.open-cluster-management.io
-          resources:
-          - managedclusters/accept
-          verbs:
-          - update
         - apiGroups:
           - route.openshift.io
           resources:
@@ -986,7 +754,7 @@ spec:
                 - name: RELATED_IMAGE_GRAFANA
                   value: quay.io/stolostron/grafana:2.12.0-SNAPSHOT-2024-09-03-21-11-25
                 - name: RELATED_IMAGE_POSTGRESQL
-                  value: quay.io/stolostron/postgresql-16:9.5-1732622748
+                  value: quay.io/stolostron/postgresql-13:1-101
                 - name: RELATED_IMAGE_POSTGRES_EXPORTER
                   value: quay.io/prometheuscommunity/postgres-exporter:v0.15.0
                 image: quay.io/stolostron/multicluster-global-hub-operator:latest
@@ -1009,6 +777,8 @@ spec:
                   initialDelaySeconds: 5
                   periodSeconds: 10
                 resources:
+                  limits:
+                    memory: 200Mi
                   requests:
                     cpu: 1m
                     memory: 100Mi
@@ -1137,8 +907,9 @@ spec:
   maintainers:
   - email: acm-contact@redhat.com
     name: acm-contact
-  maturity: release-1.5
+  maturity: release-1.3
   provider:
     name: Red Hat, Inc
     url: https://github.com/stolostron/multicluster-global-hub
-  version: 1.5.0-dev
+  replaces: multicluster-global-hub-operator.v1.3.3
+  version: 1.3.4
