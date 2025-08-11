@@ -33,14 +33,33 @@ metadata:
     containerImage: quay.io/stolostron/multicluster-global-hub-operator:latest
     createdAt: "2025-08-08T02:43:47Z"
     description: Manages the installation and upgrade of the Multicluster Global Hub.
+    features.operators.openshift.io/cnf: "false"
+    features.operators.openshift.io/cni: "false"
+    features.operators.openshift.io/csi: "false"
+    features.operators.openshift.io/disconnected: "true"
+    features.operators.openshift.io/fips-compliant: "true"
+    features.operators.openshift.io/proxy-aware: "false"
+    features.operators.openshift.io/tls-profiles: "false"
+    features.operators.openshift.io/token-auth-aws: "false"
+    features.operators.openshift.io/token-auth-azure: "false"
+    features.operators.openshift.io/token-auth-gcp: "false"
     operatorframework.io/initialization-resource: '{"apiVersion":"operator.open-cluster-management.io/v1alpha4",
       "kind":"MulticlusterGlobalHub","metadata":{"name":"multiclusterglobalhub","namespace":"multicluster-global-hub"},
       "spec": {}}'
     operatorframework.io/suggested-namespace: multicluster-global-hub
+    operators.openshift.io/infrastructure-features: '["disconnected", "fips"]'
+    operators.openshift.io/valid-subscription: '["OpenShift Platform Plus", "Red Hat
+      Advanced Cluster Management for Kubernetes"]'
     operators.operatorframework.io/builder: operator-sdk-v1.34.1
     operators.operatorframework.io/project_layout: go.kubebuilder.io/v4
     repository: https://github.com/stolostron/multicluster-global-hub
     support: Red Hat
+  labels:
+    operatorframework.io/arch.amd64: supported
+    operatorframework.io/arch.arm64: supported
+    operatorframework.io/arch.ppc64le: supported
+    operatorframework.io/arch.s390x: supported
+    operatorframework.io/os.linux: supported
   name: multicluster-global-hub-operator.v1.3.4
   namespace: placeholder
 spec:
