@@ -58,5 +58,4 @@ sed -i \
 	"${csv_file}"
 
 sed -i -e "s|multicluster-global-hub-operator\\.v|multicluster-global-hub-operator-rh\\.v|g" "${csv_file}"
-sed -i -e "s|1.5.0-dev|1.5.0|g" "${csv_file}"
 sed -i -e "s|multicluster-global-hub-operator|multicluster-global-hub-operator-rh|g" "metadata/annotations.yaml"
