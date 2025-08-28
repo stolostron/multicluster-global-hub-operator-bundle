@@ -186,6 +186,14 @@ spec:
                         statusTopic: gh-status.*
                     description: Kafka specifies the desired state of kafka
                     properties:
+                      consumerGroupPrefix:
+                        description: |-
+                          ConsumerGroupPrefix specifies the prefix for Kafka consumer groups.
+                          The final consumer group ID is constructed as follows:
+                          - For Global Hub: <prefix> + "global_hub"
+                          - For Managed Hubs: <prefix> + <managed-hub-name> (hyphens replaced with underscores)
+                          If not specified, defaults to hub name only (hyphens replaced with underscores).
+                        type: string
                       storageSize:
                         description: StorageSize specifies the size for storage
                         type: string
@@ -240,27 +248,6 @@ spec:
                   EnableMetrics enables the metrics for the global hub created kafka and postgres components.
                   If the user provides the kafka and postgres, then the enablemetrics variable is useless.
                 type: boolean
-              featureGates:
-                description: FeatureGates represents a list of configurable feature
-                  gates.
-                items:
-                  properties:
-                    feature:
-                      description: ImportClusterInHosted enables importing managed
-                        hub clusters in hosted mode.
-                      enum:
-                      - ImportClusterInHosted
-                      type: string
-                    mode:
-                      default: Enable
-                      enum:
-                      - Enable
-                      - Disable
-                      type: string
-                  required:
-                  - feature
-                  type: object
-                type: array
               imagePullPolicy:
                 description: ImagePullPolicy specifies the pull policy of the multicluster
                   global hub images
