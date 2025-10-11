@@ -25,7 +25,8 @@ LABEL com.redhat.component="multicluster-global-hub-operator-bundle-container"
 LABEL com.redhat.delivery.operator.bundle=true
 
 # Bundle metadata
-LABEL name="multicluster-global-hub/multicluster-global-hub-operator-bundle"
+LABEL name="multicluster-globalhub/multicluster-globalhub-operator-bundle"
+LABEL cpe="cpe:/a:redhat:multicluster_globalhub:1.5::el9"
 LABEL version="release-1.5"
 LABEL summary="multicluster global hub operator bundle"
 LABEL io.openshift.expose-services=""
