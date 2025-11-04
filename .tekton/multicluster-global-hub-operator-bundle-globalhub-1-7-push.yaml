@@ -9,13 +9,13 @@ metadata:
     pipelinesascode.tekton.dev/cancel-in-progress: "false"
     pipelinesascode.tekton.dev/max-keep-runs: "3"
     pipelinesascode.tekton.dev/on-cel-expression: event == "push" && target_branch
-      == "release-1.6"
+      == "release-1.7"
   creationTimestamp: null
   labels:
-    appstudio.openshift.io/application: release-globalhub-1-6
-    appstudio.openshift.io/component: multicluster-global-hub-operator-bundle-globalhub-1-6
+    appstudio.openshift.io/application: release-globalhub-1-7
+    appstudio.openshift.io/component: multicluster-global-hub-operator-bundle-globalhub-1-7
     pipelines.appstudio.openshift.io/type: build
-  name: multicluster-global-hub-operator-bundle-globalhub-1-6-on-push
+  name: multicluster-global-hub-operator-bundle-globalhub-1-7-on-push
   namespace: acm-multicluster-glo-tenant
 spec:
   params:
@@ -24,7 +24,7 @@ spec:
   - name: revision
     value: '{{revision}}'
   - name: output-image
-    value: quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-operator-bundle-globalhub-1-6:{{revision}}
+    value: quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-operator-bundle-globalhub-1-7:{{revision}}
   - name: dockerfile
     value: Containerfile.bundle
   - name: path-context
@@ -36,7 +36,7 @@ spec:
   - name: send-slack-notification
     value: "true"
   - name: konflux-application-name
-    value: "release-globalhub-1-6"
+    value: "release-globalhub-1-7"
   - name: slack-webhook-url-secret-name
     # See details: https://konflux.pages.redhat.com/docs/users/patterns/slack-notifications.html
     value: "slack-notify-webhook"
@@ -56,7 +56,7 @@ spec:
       - name: pathInRepo
         value: pipelines/common-oci-ta.yaml
   taskRunTemplate:
-    serviceAccountName: build-pipeline-multicluster-global-hub-operator-bundle-globalhub-1-6
+    serviceAccountName: build-pipeline-multicluster-global-hub-operator-bundle-globalhub-1-7
   workspaces:
   - name: git-auth
     secret:
