@@ -41,7 +41,7 @@ metadata:
     categories: Integration & Delivery,OpenShift Optional
     certified: "false"
     containerImage: quay.io/stolostron/multicluster-global-hub-operator:latest
-    createdAt: "2025-08-27T07:10:21Z"
+    createdAt: "2025-11-13T09:03:15Z"
     description: Manages the installation and upgrade of the Multicluster Global Hub.
     features.operators.openshift.io/cnf: "false"
     features.operators.openshift.io/cni: "false"
@@ -255,7 +255,7 @@ spec:
     ```
     ## Documentation
     For documentation about installing and using the Multicluster GlobalHub Operator with Red Hat Advanced Cluster Management for
-    Kubernetes, see [Multicluser GlobalHub Documentation](https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.9/html-single/multicluster_global_hub/index#doc-wrapper) in the Red Hat Advanced Cluster Management
+    Kubernetes, see [Multicluser GlobalHub Documentation](https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.16/html-single/multicluster_global_hub/index#doc-wrapper) in the Red Hat Advanced Cluster Management
     documentation.
 
     ## Support & Troubleshooting
