@@ -6,13 +6,13 @@ metadata:
 spec:
   imageDigestMirrors:
     - mirrors:
-        - quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-agent-globalhub-1-7
+        - quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-agent-globalhub-1-8
       source: registry.redhat.io/multicluster-globalhub/multicluster-globalhub-agent-rhel9
     - mirrors:
-        - quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-manager-globalhub-1-7
+        - quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-manager-globalhub-1-8
       source: registry.redhat.io/multicluster-globalhub/multicluster-globalhub-manager-rhel9
     - mirrors:
-        - quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-operator-globalhub-1-7
+        - quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/multicluster-global-hub-operator-globalhub-1-8
       source: registry.redhat.io/multicluster-globalhub/multicluster-globalhub-rhel9-operator
     - mirrors:
         - quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/glo-grafana-globalhub-1-6
