@@ -7,5 +7,15 @@
   "addLabels": [
     "lgtm"
   ],
-  "branchPrefix": "konflux/component-updates/"
+  "branchPrefix": "konflux/component-updates/",
+  "regexManagers": [
+    {
+      "fileMatch": ["^konflux-patch\\.sh$"],
+      "matchStrings": [
+        "MULTICLUSTER_GLOBAL_HUB_POSTGRESQL_IMAGE=(?<depName>.*?)@(?<currentDigest>sha256:[a-f0-9]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "docker"
+    }
+  ]
 }
