@@ -8,12 +8,14 @@
     "lgtm"
   ],
   "branchPrefix": "konflux/component-updates/",
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": ["^konflux-patch\\.sh$"],
+      "customType": "regex",
+      "fileMatch": ["(^|/)konflux-patch\\.sh$"],
       "matchStrings": [
-        "MULTICLUSTER_GLOBAL_HUB_POSTGRESQL_IMAGE=(?<depName>.*?)@(?<currentDigest>sha256:[a-f0-9]+)"
+        "export MULTICLUSTER_GLOBAL_HUB_POSTGRESQL_IMAGE=(?<depName>[^:@]+)@(?<currentDigest>sha256:[a-f0-9]+)"
       ],
+      "autoReplaceStringTemplate": "export MULTICLUSTER_GLOBAL_HUB_POSTGRESQL_IMAGE={{{depName}}}@{{{newDigest}}}",
       "datasourceTemplate": "docker",
       "versioningTemplate": "docker"
     }
