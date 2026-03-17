@@ -7,17 +7,15 @@
   "addLabels": [
     "lgtm"
   ],
-  "branchPrefix": "konflux/component-updates/",
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["(^|/)konflux-patch\\.sh$"],
+      "managerFilePatterns": ["(^|/)konflux-patch\\.sh$"],
       "matchStrings": [
-        "export MULTICLUSTER_GLOBAL_HUB_POSTGRESQL_IMAGE=(?<depName>[^:@]+)@(?<currentDigest>sha256:[a-f0-9]+)"
+        "export MULTICLUSTER_GLOBAL_HUB_POSTGRESQL_IMAGE=registry.redhat.io/rhel9/postgresql-16@(?<currentDigest>sha256:[a-f0-9]+)\\n"
       ],
-      "autoReplaceStringTemplate": "export MULTICLUSTER_GLOBAL_HUB_POSTGRESQL_IMAGE={{{depName}}}@{{{newDigest}}}",
-      "datasourceTemplate": "docker",
-      "versioningTemplate": "docker"
+      "depNameTemplate": "registry.redhat.io/rhel9/postgresql-16",
+      "datasourceTemplate": "docker"
     }
   ]
 }
