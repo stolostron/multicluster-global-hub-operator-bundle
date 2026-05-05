@@ -1,7 +1,8 @@
 approvers:
-- clyang82
+- bjoydeep
+- birsanv
 
 reviewers:
-- yanmxa
-- ldpliu
+- bjoydeep
+- birsanv
 - red-hat-konflux
