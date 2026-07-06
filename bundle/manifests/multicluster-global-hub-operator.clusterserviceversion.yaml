@@ -361,6 +361,14 @@ spec:
           verbs:
           - get
         - apiGroups:
+          - config.openshift.io
+          resources:
+          - networks
+          verbs:
+          - get
+          - list
+          - watch
+        - apiGroups:
           - addon.open-cluster-management.io
           resources:
           - addondeploymentconfigs
@@ -678,6 +686,14 @@ spec:
           - list
           - watch
         - apiGroups:
+          - discovery.k8s.io
+          resources:
+          - endpointslices
+          verbs:
+          - get
+          - list
+          - watch
+        - apiGroups:
           - ""
           resources:
           - groups
@@ -973,6 +989,14 @@ spec:
           - apiservers
           verbs:
           - get
+        - apiGroups:
+          - config.openshift.io
+          resources:
+          - networks
+          verbs:
+          - get
+          - list
+          - watch
         - apiGroups:
           - config.openshift.io
           resources:
@@ -1385,6 +1409,7 @@ spec:
           - services
           - services/finalizers
           - endpoints
+          - endpointslices
           - events
           - configmaps
           - secrets
