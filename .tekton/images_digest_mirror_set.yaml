@@ -18,5 +18,5 @@ spec:
         - quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/glo-grafana-globalhub-1-6
       source: registry.redhat.io/multicluster-globalhub/multicluster-globalhub-grafana-rhel9
     - mirrors:
-        - quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/postgres-exporter-globalhub-1-6
+        - quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/postgres-exporter-globalhub-1-7
       source: registry.redhat.io/multicluster-globalhub/multicluster-globalhub-postgres-exporter-rhel9
