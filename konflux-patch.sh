@@ -17,7 +17,7 @@ export MULTICLUSTER_GLOBAL_HUB_GRAFANA_IMAGE="registry.redhat.io/multicluster-gl
 export MULTICLUSTER_GLOBAL_HUB_POSTGRES_EXPORTER_STAGE_IMAGE=quay.io/redhat-user-workloads/acm-multicluster-glo-tenant/postgres-exporter-globalhub-1-4@sha256:bf8423be92941cc840a39dd6f2a272fca1a96ecc9c8e4a1d0d0ed3bbaf801379
 export MULTICLUSTER_GLOBAL_HUB_POSTGRES_EXPORTER_IMAGE="registry.redhat.io/multicluster-globalhub/multicluster-globalhub-postgres-exporter-rhel9@${MULTICLUSTER_GLOBAL_HUB_POSTGRES_EXPORTER_STAGE_IMAGE##*@}"
 
-export MULTICLUSTER_GLOBAL_HUB_POSTGRESQL_IMAGE=registry.redhat.io/rhel9/postgresql-16@sha256:435ba5c1d3f686cf8a45ae525b4d169ced6b33753bcfab99a1498bd9e6e99817
+export MULTICLUSTER_GLOBAL_HUB_POSTGRESQL_IMAGE=registry.redhat.io/rhel9/postgresql-16@sha256:4b2c10b97c7247e3dbb570eb3e345ff43e03e4d83894a280c9c19983e70f84b8
 
 csv_name="multicluster-global-hub-operator.clusterserviceversion.yaml"
 csv_file="manifests/${csv_name}"
