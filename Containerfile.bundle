@@ -1,3 +1,4 @@
+# Trigger Konflux on-push after CSV duplicate removal (#1769).
 FROM registry.access.redhat.com/ubi9/ubi-minimal:latest
 
 WORKDIR /
